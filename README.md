@@ -16,7 +16,7 @@ Compound interest, can be calculated using the formula FV = P*(1+R/N)^(N*T), whe
 - FV is the future value of the loan or investment
 - P is the initial principal amount (depositAmount)
 - R is the annual interest rate (interestRateAnnually)
-- N represents the number of times interest is compounded per year (12 / interestPaidFrequencyInMonth) (Note: if interestPaidFrequencyInMonth = 0 -> By maturity)
+- N represents the number of times interest is compounded per year
 - T represents time in years (investmentTermInYears)
 
 Credit: https://www.realized1031.com/glossary/compound-interest

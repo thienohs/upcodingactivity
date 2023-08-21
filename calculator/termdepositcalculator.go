@@ -46,8 +46,8 @@ func (c *TermDepositCalculator) CalculateFinalBalance(depositAmount *decimal.Dec
 		// where FV is the future value of the loan or investment,
 		// P is the initial principal amount (depositAmount),
 		// R is the annual interest rate (interestRateAnnually),
-		// N represents the number of times interest is compounded per year (numberOfInterestPaidPerYear, if numberOfInterestPaidPerYear = 0 -> By maturity),
-		// T represents time in years. (investmentTermInYears)
+		// N represents the number of times interest is compounded per year (numberOfInterestPaidPerYear),
+		// T represents time in years (investmentTermInYears)
 		// Credit: https://www.realized1031.com/glossary/compound-interest
 
 		// N
