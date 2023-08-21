@@ -7,7 +7,7 @@ import (
 	"upcodingactivity/helpers"
 )
 
-// TestMonthlyInterestPayment_Rate_1_1_Term_3 perform monthly interest payment test
+// TestConvertByMaturity test convert frequency input "by maturity" to number of interest paid per year
 func TestConvertByMaturity(t *testing.T) {
 	result, err := helpers.ConvertFrequencyInputToNumberOfInterestPaidPerYear(0)
 	expected := 0
@@ -20,6 +20,7 @@ func TestConvertByMaturity(t *testing.T) {
 	}
 }
 
+// TestConvertMonthly test convert frequency input "monthly" to number of interest paid per year
 func TestConvertMonthly(t *testing.T) {
 	result, err := helpers.ConvertFrequencyInputToNumberOfInterestPaidPerYear(1)
 	expected := 12
@@ -32,6 +33,7 @@ func TestConvertMonthly(t *testing.T) {
 	}
 }
 
+// TestConvertMonthly test convert frequency input "quarterly" to number of interest paid per year
 func TestConvertQuarterly(t *testing.T) {
 	result, err := helpers.ConvertFrequencyInputToNumberOfInterestPaidPerYear(2)
 	expected := 4
@@ -44,6 +46,7 @@ func TestConvertQuarterly(t *testing.T) {
 	}
 }
 
+// TestConvertMonthly test convert frequency input "annually" to number of interest paid per year
 func TestConvertAnnually(t *testing.T) {
 	result, err := helpers.ConvertFrequencyInputToNumberOfInterestPaidPerYear(3)
 	expected := 1
@@ -56,6 +59,7 @@ func TestConvertAnnually(t *testing.T) {
 	}
 }
 
+// TestConvertError test invalid frequency input
 func TestConvertError(t *testing.T) {
 	_, err := helpers.ConvertFrequencyInputToNumberOfInterestPaidPerYear(4)
 	if err == nil {
@@ -64,6 +68,7 @@ func TestConvertError(t *testing.T) {
 	}
 }
 
+// TestUsingTestDataFromCSVFile test using TestDataFromCSVFile for existing valid CSV file
 func TestUsingTestDataFromCSVFile(t *testing.T) {
 	cal := calculator.NewTermDepositCalculator()
 	err := helpers.TestDataFromCSVFile(cal, "../data/test.csv", t)
