@@ -17,7 +17,7 @@ func NewTermDepositCalculator() *TermDepositCalculator {
 // CalculateFinalBalance this function will calculate final balance with inputs:
 // depositAmount(Arbitrary-precision fixed-point decimal number) the original deposit amount (principal amount),
 // interestRateAnnually interest rate (annual),
-// interestPaidFrequencyInMonth interest paid out frequency (in number of months),
+// numberOfInterestPaidPerYear number of interest paid (per year),
 // investmentTermInYears investment term (in number of years)
 //
 // Return: the final balance and error (if any)
@@ -65,10 +65,10 @@ func (c *TermDepositCalculator) CalculateFinalBalance(depositAmount *decimal.Dec
 	return &finalBalance, nil
 }
 
-// calculateFinalBalanceWithStringInput this function will calculate final balance using CalculateFinalBalance with inputs:
-// depositAmount(string) the original deposit amount (principal amount),
+// CalculateFinalBalanceWithStringInput this function will calculate final balance using CalculateFinalBalance with inputs:
+// depositAmountText(string) the original deposit amount (principal amount),
 // interestRateAnnually interest rate (annual),
-// interestPaidFrequencyInMonth interest paid out frequency (in number of months),
+// numberOfInterestPaidPerYear number of interest paid (per year),
 // investmentTermInYears investment term (in number of years)
 //
 // Return: the final balance and error (if any)
