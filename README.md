@@ -33,8 +33,14 @@ Credit: https://www.realized1031.com/glossary/compound-interest
 
 ## Note: 
 - Please run the commands at the project folder
-- Required flags: -deposit (Deposit amount), -rate (interest rate, annually), -term (investment term, years), -frequency (interest paid frequency)
-- Optional flags: -decimalplaces (Number of decimal places for rounding), -csvtest (CSV file path to test)
+- Required flags:
+    - -deposit (Deposit amount)
+    - -rate (interest rate, annually)
+    - -term (investment term, years)
+    - -frequency (interest paid frequency)
+- Optional flags: 
+    - -decimalplaces (Number of decimal places for rounding)
+    - -csvtest (CSV file path to test)
 - Accepted values for interest paid frequency are: 0,1,2 or 3 (which 0 = at maturity, 1 = monthly, 2 = quarterly, 3 = annually)
 - Deposit amount can support large number (maximum of 2^31 digits after the decimal point)
 - Interest rate is presented using float64
