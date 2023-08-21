@@ -23,7 +23,7 @@ func NewTermDepositCalculator() *TermDepositCalculator {
 // Return: the final balance and error (if any)
 func (c *TermDepositCalculator) CalculateFinalBalance(depositAmount *decimal.Decimal, interestRateAnnually float64, numberOfInterestPaidPerYear int, investmentTermInYears int) (*decimal.Decimal, error) {
 	// Validation
-	// 0 <= interestPaidFrequencyInMonth <= 52, which interestPaidFrequencyInMonth = 0 -> By maturity
+	// 0 <= numberOfInterestPaidPerYear <= 52, which numberOfInterestPaidPerYear = 0 -> By maturity
 	if numberOfInterestPaidPerYear < 0 || numberOfInterestPaidPerYear > 52 {
 		return nil, errors.New("numberOfInterestPaidPerYear is out of range, valid range is 0 - 52")
 	}
