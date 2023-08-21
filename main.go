@@ -75,7 +75,7 @@ func main() {
 	finalBalance, err := cal.CalculateFinalBalanceWithStringInput(depositAmountText, interestRate, numberOfInterestPaidPerYear, investmentTerm)
 
 	if err == nil {
-		fmt.Println("Final balance:", finalBalance.BigFloat().Text('f', decimalPlaces))
+		fmt.Println("Final balance:", finalBalance.StringFixedBank(int32(decimalPlaces)))
 	} else {
 		log.Fatalln("error:", err)
 	}
