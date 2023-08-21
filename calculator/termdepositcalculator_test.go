@@ -155,6 +155,23 @@ func TestPrecision(t *testing.T) {
 	}
 }
 
+// TestOutOfRangeNumberOfInterestPaidPerYear test when numberOfInterestPaidPerYear is out of range (current valid range is 0-52)
+func TestOutOfRangeNumberOfInterestPaidPerYear(t *testing.T) {
+	depositAmount := decimal.NewFromFloat(10000)
+	cal := calculator.NewTermDepositCalculator()
+	_, err := cal.CalculateFinalBalance(&depositAmount, 1.1, 53, 3)
+	if err == nil {
+		t.Fail()
+		log.Println("Expected an error but found: ", err)
+	}
+
+	_, err = cal.CalculateFinalBalance(&depositAmount, 1.1, -1, 3)
+	if err == nil {
+		t.Fail()
+		log.Println("Expected an error but found: ", err)
+	}
+}
+
 // TestCSV test inputs from CSV file
 func TestCSV(t *testing.T) {
 	cal := calculator.NewTermDepositCalculator()
