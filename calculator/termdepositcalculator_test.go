@@ -9,10 +9,11 @@ import (
 	"github.com/shopspring/decimal"
 )
 
-// TestMonthlyInterestPayment_Rate_1_1_Term_3 perform monthly interest payment test
-func TestMonthlyInterestPayment_Rate_1_1_Term_3(t *testing.T) {
+// TestMonthlyInterestPayment perform monthly interest payment test
+func TestMonthlyInterestPayment(t *testing.T) {
+	depositAmount := decimal.NewFromFloat(10000)
 	cal := calculator.NewTermDepositCalculator()
-	finalBalance, err := cal.CalculateFinalBalanceWithStringInput("10000", 1.1, 12, 3)
+	finalBalance, err := cal.CalculateFinalBalance(&depositAmount, 1.1, 12, 3)
 	expectedBalance := "10335"
 	if err != nil {
 		t.Fail()
@@ -23,8 +24,8 @@ func TestMonthlyInterestPayment_Rate_1_1_Term_3(t *testing.T) {
 	}
 }
 
-// TestMonthlyInterestPayment_Rate_3_7_Term_5 perform monthly interest payment test
-func TestMonthlyInterestPayment_Rate_3_7_Term_5(t *testing.T) {
+// TestMonthlyInterestPaymentUsingTextInputForDepositAmount perform monthly interest payment test using text input for deposit amount
+func TestMonthlyInterestPaymentUsingTextInputForDepositAmount(t *testing.T) {
 	cal := calculator.NewTermDepositCalculator()
 	finalBalance, err := cal.CalculateFinalBalanceWithStringInput("10000", 3.7, 12, 5)
 	expectedBalance := "12029"
@@ -37,10 +38,11 @@ func TestMonthlyInterestPayment_Rate_3_7_Term_5(t *testing.T) {
 	}
 }
 
-// TestQuarterlyInterestPayment_Rate_1_1_Term_3 perform quarterly interest payment test
-func TestQuarterlyInterestPayment_Rate_1_1_Term_3(t *testing.T) {
+// TestQuarterlyInterestPayment perform quarterly interest payment test
+func TestQuarterlyInterestPayment(t *testing.T) {
+	depositAmount := decimal.NewFromFloat(10000)
 	cal := calculator.NewTermDepositCalculator()
-	finalBalance, err := cal.CalculateFinalBalanceWithStringInput("10000", 1.1, 12/3, 3)
+	finalBalance, err := cal.CalculateFinalBalance(&depositAmount, 1.1, 12/3, 3)
 	expectedBalance := "10335"
 	if err != nil {
 		t.Fail()
@@ -51,8 +53,8 @@ func TestQuarterlyInterestPayment_Rate_1_1_Term_3(t *testing.T) {
 	}
 }
 
-// TestQuarterlyInterestPayment_Rate_3_7_Term_5 perform quarterly interest payment test
-func TestQuarterlyInterestPayment_Rate_3_7_Term_5(t *testing.T) {
+// TestQuarterlyInterestPaymentUsingTextInputForDepositAmount perform quarterly interest payment test using text input for deposit amount
+func TestQuarterlyInterestPaymentUsingTextInputForDepositAmount(t *testing.T) {
 	cal := calculator.NewTermDepositCalculator()
 	finalBalance, err := cal.CalculateFinalBalanceWithStringInput("10000", 3.7, 12/3, 5)
 	expectedBalance := "12022"
@@ -65,10 +67,11 @@ func TestQuarterlyInterestPayment_Rate_3_7_Term_5(t *testing.T) {
 	}
 }
 
-// TestYearlyInterestPayment_Rate_1_1_Term_3 perform yearly interest payment test
-func TestYearlyInterestPayment_Rate_1_1_Term_3(t *testing.T) {
+// TestYearlyInterestPayment perform yearly interest payment test
+func TestYearlyInterestPayment(t *testing.T) {
+	depositAmount := decimal.NewFromFloat(10000)
 	cal := calculator.NewTermDepositCalculator()
-	finalBalance, err := cal.CalculateFinalBalanceWithStringInput("10000", 1.1, 1, 3)
+	finalBalance, err := cal.CalculateFinalBalance(&depositAmount, 1.1, 1, 3)
 	expectedBalance := "10334"
 	if err != nil {
 		t.Fail()
@@ -79,8 +82,8 @@ func TestYearlyInterestPayment_Rate_1_1_Term_3(t *testing.T) {
 	}
 }
 
-// TestYearlyInterestPayment_Rate_3_7_Term_5 perform yearly interest payment test
-func TestYearlyInterestPayment_Rate_3_7_Term_5(t *testing.T) {
+// TestYearlyInterestPaymentUsingTextInputForDepositAmount perform yearly interest payment test using text input for deposit amount
+func TestYearlyInterestPaymentUsingTextInputForDepositAmount(t *testing.T) {
 	cal := calculator.NewTermDepositCalculator()
 	finalBalance, err := cal.CalculateFinalBalanceWithStringInput("10000", 3.7, 1, 5)
 	expectedBalance := "11992"
@@ -93,10 +96,11 @@ func TestYearlyInterestPayment_Rate_3_7_Term_5(t *testing.T) {
 	}
 }
 
-// TestByMaturityInterestPayment_Rate_1_1_Term_3 perform by maturity interest payment test
-func TestByMaturityInterestPayment_Rate_1_1_Term_3(t *testing.T) {
+// TestByMaturityInterestPayment perform by maturity interest payment test
+func TestByMaturityInterestPayment(t *testing.T) {
+	depositAmount := decimal.NewFromFloat(10000)
 	cal := calculator.NewTermDepositCalculator()
-	finalBalance, err := cal.CalculateFinalBalanceWithStringInput("10000", 1.1, 0, 3)
+	finalBalance, err := cal.CalculateFinalBalance(&depositAmount, 1.1, 0, 3)
 	expectedBalance := "10330"
 	if err != nil {
 		t.Fail()
@@ -107,8 +111,8 @@ func TestByMaturityInterestPayment_Rate_1_1_Term_3(t *testing.T) {
 	}
 }
 
-// TestByMaturityInterestPayment_Rate_3_7_Term_5 perform by maturity interest payment test
-func TestByMaturityInterestPayment_Rate_3_7_Term_5(t *testing.T) {
+// TestByMaturityInterestPaymentUsingTextInputForDepositAmount perform by maturity interest payment test using text input for deposit amount
+func TestByMaturityInterestPaymentUsingTextInputForDepositAmount(t *testing.T) {
 	cal := calculator.NewTermDepositCalculator()
 	finalBalance, err := cal.CalculateFinalBalanceWithStringInput("10000", 3.7, 0, 5)
 	expectedBalance := "11850"
