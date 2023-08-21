@@ -28,28 +28,31 @@ func (c *TermDepositCalculator) CalculateFinalBalance(depositAmount *decimal.Dec
 		return nil, errors.New("numberOfInterestPaidPerYear is out of range, valid range is 0 - 52")
 	}
 
-	// This will calculate the fixed annual interest earned
-	fixedAnnualInterestEarned := decimal.NewFromFloat(float64(interestRateAnnually))
-	fixedAnnualInterestEarned = fixedAnnualInterestEarned.Mul(*depositAmount)
-	fixedAnnualInterestEarned = fixedAnnualInterestEarned.Div(decimal.NewFromFloat((100)))
-
-	// Use the fixedAnnualInterestEarned to go through re-investment process
-
-	// Compound interest, can be calculated using the formula FV = P*(1+R/N)^(N*T),
-	// where FV is the future value of the loan or investment,
-	// P is the initial principal amount (depositAmount),
-	// R is the annual interest rate (interestRateAnnually),
-	// N represents the number of times interest is compounded per year (numberOfInterestPaidPerYear, if numberOfInterestPaidPerYear = 0 -> By maturity),
-	// T represents time in years. (investmentTermInYears)
-	// Credit: https://www.realized1031.com/glossary/compound-interest
+	// Initialize final balance
 	finalBalance := decimal.NewFromFloat(0)
 
-	// if numberOfInterestPaidPerYear = 0 -> By maturity
+	// numberOfInterestPaidPerYear = 0 -> By maturity
 	if numberOfInterestPaidPerYear == 0 {
+		// This will calculate the fixed annual interest earned
+		// fixedAnnualInterestEarned = interestRateAnnually * depositAmount / 100
+		fixedAnnualInterestEarned := decimal.NewFromFloat(float64(interestRateAnnually))
+		fixedAnnualInterestEarned = fixedAnnualInterestEarned.Mul(*depositAmount)
+		fixedAnnualInterestEarned = fixedAnnualInterestEarned.Div(decimal.NewFromFloat((100)))
+
 		// Final balance = depositAmount + fixedAnnualInterestEarned * investmentTermInYears
 		finalBalance = (*depositAmount).Add(fixedAnnualInterestEarned.Mul(decimal.NewFromFloat(float64(investmentTermInYears))))
 	} else {
+		// Compound interest, can be calculated using the formula FV = P*(1+R/N)^(N*T),
+		// where FV is the future value of the loan or investment,
+		// P is the initial principal amount (depositAmount),
+		// R is the annual interest rate (interestRateAnnually),
+		// N represents the number of times interest is compounded per year (numberOfInterestPaidPerYear, if numberOfInterestPaidPerYear = 0 -> By maturity),
+		// T represents time in years. (investmentTermInYears)
+		// Credit: https://www.realized1031.com/glossary/compound-interest
+
+		// N
 		noOfTimesInterestIsCompoundedPerYear := decimal.NewFromFloat(float64(numberOfInterestPaidPerYear))
+
 		// Part 1 = (1+R/N)
 		part1 := decimal.NewFromFloat(interestRateAnnually / 100)
 		part1 = part1.Div(noOfTimesInterestIsCompoundedPerYear)
