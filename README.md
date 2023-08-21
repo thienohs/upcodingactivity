@@ -55,7 +55,7 @@ go run . -deposit 10000  -rate 1.1 -term 30 -frequency 3
 
 ## With decimal places
 ```
-go run . -deposit 10000  -rate 1.1 -term 30 -frequency 3 -decimalplaces=2
+go run . -deposit 10000  -rate 1.1 -term 30 -frequency 3 -decimalplaces 2
 ```
 
 ## Test multiple inputs using csv file
@@ -94,7 +94,7 @@ GOOS=darwin GOARCH=amd64 go build -o bin/mac/upcodingactivity
 
 ## MacOS (M1, 64-bit)
 ```
-GOOS=darwin GOARCH=arm64 go build -o bin/mac/upcodingactivity
+GOOS=darwin GOARCH=arm64 go build -o bin/mac_m1/upcodingactivity
 ```
 
 ## Windows (64-bit)
@@ -112,7 +112,7 @@ GOOS=linux GOARCH=amd64  go build -o bin/linux/upcodingactivity
 ./bin/mac/upcodingactivity -deposit 10000  -rate 1.1 -term 30 -frequency 3
 ```
 ```
-./bin/mac/upcodingactivity -deposit 10000  -rate 1.1 -term 30 -frequency 3 -decimalplaces=2
+./bin/mac/upcodingactivity -deposit 10000  -rate 1.1 -term 30 -frequency 3 -decimalplaces 2
 ```
 
 # Opensource licenses and credits
